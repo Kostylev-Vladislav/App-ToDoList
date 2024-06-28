@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct App_ToDoListApp: App {
+struct TasksApp: App {
+    @StateObject var taskStorage = TaskStorage.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainScreen()
+                .environmentObject(taskStorage)
         }
     }
 }

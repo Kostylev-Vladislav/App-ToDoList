@@ -1,8 +1,8 @@
 //
-//  LogicTests.swift
+//  FileCacheTests.swift
 //  App_ToDoListTests
 //
-//  Created by Владислав on 21.06.2024.
+//  Created by Владислав on 24.06.2024.
 //
 
 import XCTest
@@ -39,10 +39,20 @@ class FileCacheTests: XCTestCase {
         // Временный файл для тестирования
         let filename = FileManager.default.temporaryDirectory.appendingPathComponent("testfile.json").path
         
-        cache.save(filename: filename)
+        do {
+            try cache.save(filename: filename)
+        } catch {
+            
+        }
         
         let newCache = FileCache()
-        newCache.load(filename: filename)
+        
+        do {
+            try newCache.load(filename: filename)
+        } catch {
+
+        }
+        
         
         XCTAssertEqual(newCache.items.count, 1)
         XCTAssertEqual(newCache.items.first?.id, item.id)
