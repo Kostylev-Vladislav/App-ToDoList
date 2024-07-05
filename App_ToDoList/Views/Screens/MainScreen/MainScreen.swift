@@ -14,6 +14,7 @@ struct MainScreen: View {
     @State private var showCompleted = false
     @State private var sortByImportance = false
     @State private var showMenu = false
+    @State private var isPresentingCalendar = false
     
     
     var filtredTasks: [ToDoItem] {
@@ -34,28 +35,41 @@ struct MainScreen: View {
                     .padding([.leading, .trailing, .top])
                 Spacer()
                 Button(action: {
-                    withAnimation {
-                        showMenu.toggle()
-                    }
+                    isPresentingCalendar = true
                 }) {
-                    Image("Filter")
-                        .frame(maxWidth: 100)
-                        .padding(.top, 16)
+                    Image(systemName: "calendar")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        
                     
                 }
+                .padding([.trailing, .top])
+                .sheet(isPresented: $isPresentingCalendar) {
+                    CalendarViewControllerRepresentable()
+                }
+//                Button(action: {
+//                    withAnimation {
+//                        showMenu.toggle()
+//                    }
+//                }) {
+//                    Image("Filter")
+//                        .frame(maxWidth: 100)
+//                        .padding(.top, 16)
+//                    
+//                }
         }
 
-            if showMenu {
-                VStack {
-                    Toggle("Скрыть/Показать выполненное", isOn: $showCompleted)
-                        .padding()
-                    Toggle("Сортировка по добавлению/важности", isOn: $sortByImportance)
-                        .padding()
-                }
-                .background(Color("BackSecondary"))
-                .cornerRadius(8)
-                .padding()
-            }
+//            if showMenu {
+//                VStack {
+//                    Toggle("Скрыть/Показать выполненное", isOn: $showCompleted)
+//                        .padding()
+//                    Toggle("Сортировка по добавлению/важности", isOn: $sortByImportance)
+//                        .padding()
+//                }
+//                .background(Color("BackSecondary"))
+//                .cornerRadius(8)
+//                .padding()
+//            }
         }
         .padding([.leading, .trailing, .top])
     }
@@ -71,12 +85,8 @@ struct MainScreen: View {
                     showCompleted.toggle()
                 }
                 .font(.custom("SFPro_Font", size: 15))
-                
-                
-                
             }
             ) {
-                
                 ForEach($taskStorage.tasks, id: \.id) { $task in
                     if showCompleted {
                         TaskRow(task: $task)
@@ -87,16 +97,12 @@ struct MainScreen: View {
                         if !task.isDone {
                             TaskRow(task: $task)
                                 .environmentObject(taskStorage)
-                                .listRowBackground(Color("BackSecondary"))
-
-                                
+                                .listRowBackground(Color("BackSecondary")) 
                         }
                     }
                 }
-                
             }
         }
-        
     }
     
     var addTaskButton: some View {
@@ -110,19 +116,18 @@ struct MainScreen: View {
                         .resizable()
                         .frame(width: 24, height: 24)
                         .padding()
-                        .background(Color.blue)
+                        .background(.blue)
                         .foregroundColor(.white)
                         .clipShape(Circle())
                         .shadow(radius: 10)
                 }
                 .padding()
+                
                 .sheet(isPresented: $showingAddTaskView) {
                     CreateEditScreen()
                 }
             }
-            
         }
-        
     }
     
     

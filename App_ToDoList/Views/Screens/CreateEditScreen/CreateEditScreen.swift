@@ -4,16 +4,20 @@ struct CreateEditScreen: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.presentationMode) var presentationMode
     @State private var taskText = ""
-    @State private var importance: ToDoItem.Importance = .normal
+    @State private var importance: Importance = .normal
     @State private var hasDeadlineDate = false
     @State private var deadlineDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
-    @State private var selectedColor: Color = .red
+    @State private var selectedColor: Color = .clear
+    @State private var selectedCategory: TaskCategory = .other
     
+    @State private var showCategoryPicker = false
     @State private var showDatePicker = false
     @State private var showColorPicker = false
+    
     @State private var isEditing = false
     
     @State private var editTask = false
+    
     
     private let taskDateFormatterRu: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,16 +31,29 @@ struct CreateEditScreen: View {
         self.task = task
     }
     
+    var customPlaceholder: some View {
+        Text("Что надо сделать?")
+            .foregroundStyle(.gray)
+    }
     
     private var textField: some View {
-        TextField("Что надо сделать?", text: $taskText, axis: .vertical)
-            .frame(minHeight: 120)
-            .onTapGesture {
-                withAnimation {
-                    isEditing = true
-                }
+        ZStack(alignment: .topLeading) {
+            if taskText.isEmpty {
+                customPlaceholder
             }
+            TextField("", text: $taskText, axis: .vertical)
+                .multilineTextAlignment(.leading)
+                .lineLimit(.none)
+                .modifier(TextFieldFrameModifier())
+        }
+        .padding()
+        .padding(.bottom, 6)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color("BackSecondary"))
+        )
     }
+    
     
     private var importancePicker: some View {
         HStack {
@@ -44,11 +61,11 @@ struct CreateEditScreen: View {
             Spacer()
             Picker("", selection: $importance) {
                 Image("DownArrow")
-                    .tag(ToDoItem.Importance.unimportant)
+                    .tag(Importance.unimportant)
                 Text("нет")
-                    .tag(ToDoItem.Importance.normal)
+                    .tag(Importance.normal)
                 Image("RedExclamationMarks")
-                    .tag(ToDoItem.Importance.important)
+                    .tag(Importance.important)
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding(.leading)
@@ -116,13 +133,30 @@ struct CreateEditScreen: View {
         }
     }
     
+    private var categoryPicker: some View {
+        Picker("Категория", selection: $selectedCategory) {
+            ForEach(TaskCategory.allCases) { category in
+                HStack {
+                    Text(category.rawValue)
+                    Spacer()
+                    Circle()
+                        .fill(category.color)
+                        .frame(width: 20, height: 20)
+                }
+                .padding()
+                .tag(category)
+            }
+        }
+        .pickerStyle(MenuPickerStyle())
+    }
+    
     private var saveButton: some View {
         Button("Сохранить") {
             if let task = task {
-                let newVersionTask = ToDoItem(id: task.id, text: taskText, importance: importance, isDone: task.isDone, createdDate: task.createdDate, deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: Date(), colorHex: selectedColor.hexString)
+                let newVersionTask = ToDoItem(id: task.id, text: taskText, importance: importance, isDone: task.isDone, createdDate: task.createdDate, deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: Date(), colorHex: selectedColor.hexString, category: selectedCategory)
                 TaskStorage.shared.updateTask(newVersionTask)
             } else {
-                let newTask = ToDoItem(text: taskText, importance: importance, isDone: false, createdDate: Date(), deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: nil, colorHex: selectedColor.hexString)
+                let newTask = ToDoItem(text: taskText, importance: importance, isDone: false, createdDate: Date(), deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: nil, colorHex: selectedColor.hexString, category: selectedCategory)
                 TaskStorage.shared.addTask(newTask)
             }
             presentationMode.wrappedValue.dismiss()
@@ -166,6 +200,7 @@ struct CreateEditScreen: View {
                             importancePicker
                             chooseDate
                             colorPicker
+                            categoryPicker
                             if isEditing {
                                 datePicker
                             }
@@ -193,6 +228,7 @@ struct CreateEditScreen: View {
             Section {
                 importancePicker
                 colorPicker
+                categoryPicker
                 chooseDate
                 if showDatePicker {
                     datePicker

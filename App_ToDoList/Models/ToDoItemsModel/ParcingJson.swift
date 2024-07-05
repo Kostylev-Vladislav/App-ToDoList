@@ -17,6 +17,7 @@ extension ToDoItem {
         case deadline
         case changedDate
         case colorHex
+        case category
     }
 
     var json: Any {
@@ -24,7 +25,8 @@ extension ToDoItem {
             JSONKeys.id.rawValue: id,
             JSONKeys.text.rawValue: text,
             JSONKeys.isDone.rawValue: isDone,
-            JSONKeys.createdDate.rawValue: createdDate.timeIntervalSince1970
+            JSONKeys.createdDate.rawValue: createdDate.timeIntervalSince1970,
+            JSONKeys.category.rawValue: category
         ]
         if importance != .normal {
             dict[JSONKeys.importance.rawValue] = importance.rawValue
@@ -49,6 +51,9 @@ extension ToDoItem {
               let isDone = dict[JSONKeys.isDone.rawValue] as? Bool,
               let createdTime = dict[JSONKeys.createdDate.rawValue] as? TimeInterval else { return nil }
         
+        let categoryRawValue = dict[JSONKeys.category.rawValue] as? String
+        let category = TaskCategory(rawValue: categoryRawValue ?? TaskCategory.other.rawValue) ?? .other
+        
         let importanceRawValue = dict[JSONKeys.importance.rawValue] as? String
         let importance = Importance(rawValue: importanceRawValue ?? Importance.normal.rawValue) ?? .normal
         
@@ -62,6 +67,6 @@ extension ToDoItem {
         
         let colorHex = dict[JSONKeys.colorHex.rawValue] as? String
         
-        return ToDoItem(id: id, text: text, importance: importance, isDone: isDone, createdDate: createdDate, deadline: deadline, changedDate: changedDate, colorHex: colorHex)
+        return ToDoItem(id: id, text: text, importance: importance, isDone: isDone, createdDate: createdDate, deadline: deadline, changedDate: changedDate, colorHex: colorHex, category: category)
     }
 }

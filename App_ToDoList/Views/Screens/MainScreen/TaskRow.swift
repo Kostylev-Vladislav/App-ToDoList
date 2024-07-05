@@ -15,7 +15,15 @@ struct TaskRow: View {
     
     var body: some View {
         HStack {
+            Rectangle()
+                .fill(Color(hex: task.colorHex ?? "000000"))
+                .frame(width: 5)
+                .padding(.leading, -20)
+                .padding(.top, -20)
+                .padding(.bottom, -20)
+            
             if task.importance == .important {
+                
                 Image(task.isDone ? "CheckmarkCircle" : "RedCircle")
                     .foregroundColor(task.isDone ? .green : .gray)
                     .onTapGesture {
@@ -53,17 +61,19 @@ struct TaskRow: View {
             
             Spacer()
             Circle()
-                .foregroundColor(Color(hex: task.colorHex ?? "FFFFFF"))
-                .frame(width: 20, height: 20)
+                .foregroundColor(task.category.color)
+                .frame(width: 14, height: 14)
+            
             
             Image("NavigationArrow")
                 .frame(width: 15)
                 .onTapGesture {
                     isPresentingModal = true
                 }
-            
+                .padding(.trailing, -16)
         }
         .frame(maxWidth: .infinity)
+        
         .swipeActions(edge: .leading) {
             Button(action: {
                 task.isDone.toggle()
