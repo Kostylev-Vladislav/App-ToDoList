@@ -8,11 +8,7 @@
 import Foundation
 
 struct ToDoItem {
-    enum Importance: String, CaseIterable {
-        case unimportant = "неважная"
-        case normal = "обычная"
-        case important = "важная"
-    }
+
     
     let id: String
     var text: String
@@ -22,8 +18,9 @@ struct ToDoItem {
     var deadline: Date?
     var changedDate: Date?
     var colorHex: String?
+    var category: TaskCategory
     
-    init(id: String = UUID().uuidString, text: String, importance: Importance = .normal,isDone: Bool = false, createdDate: Date = Date(), deadline: Date? = nil, changedDate: Date? = nil, colorHex: String? = nil) {
+    init(id: String = UUID().uuidString, text: String, importance: Importance = .normal,isDone: Bool = false, createdDate: Date = Date(), deadline: Date? = nil, changedDate: Date? = nil, colorHex: String? = nil, category: TaskCategory = .other) {
         self.id = id
         self.text = text
         self.importance = importance
@@ -32,5 +29,6 @@ struct ToDoItem {
         self.deadline = deadline
         self.changedDate = changedDate
         self.colorHex = colorHex
+        self.category = category
     }
 }

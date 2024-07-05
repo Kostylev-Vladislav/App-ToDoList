@@ -13,7 +13,8 @@ extension ToDoItem {
         let deadlineString = deadline?.timeIntervalSince1970.description ?? ""
         let changedDateString = changedDate?.timeIntervalSince1970.description ?? ""
         let colorHexString = String(describing: colorHex)
-        return "\(id),\(text),\(importance.rawValue),\(isDone),\(createdDateString),\(deadlineString),\(changedDateString),\(colorHexString)"
+        let category = category.rawValue
+        return "\(id),\(text),\(importance.rawValue),\(isDone),\(createdDateString),\(deadlineString),\(changedDateString),\(colorHexString),\(category)"
     }
     
     static func parse(csv: String) -> ToDoItem? {
@@ -33,7 +34,7 @@ extension ToDoItem {
         }
         components.append(currentComponent)
 
-        guard components.count >= 8,
+        guard components.count >= 9,
               let isDone = Bool(components[3]),
               let createdTime = TimeInterval(components[4]) else {
             return nil
@@ -48,6 +49,7 @@ extension ToDoItem {
         let changedDate = TimeInterval(components[6]).map { Date(timeIntervalSince1970: $0) }
         
         let colorHex = components[7]
+        let category = TaskCategory(rawValue: components[8]) ?? .other
         
         return ToDoItem(
             id: id,
@@ -57,7 +59,8 @@ extension ToDoItem {
             createdDate: createdDate,
             deadline: deadline,
             changedDate: changedDate,
-            colorHex: colorHex
+            colorHex: colorHex,
+            category: category
         )
     }
 }
