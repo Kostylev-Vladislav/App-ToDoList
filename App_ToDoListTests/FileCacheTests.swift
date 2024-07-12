@@ -15,26 +15,26 @@ class FileCacheTests: XCTestCase {
         let cache = FileCache()
         let item = ToDoItem(text: "Test")
         
-        cache.add(item: item)
+        cache.add(task: item)
         
-        XCTAssertEqual(cache.items.count, 1)
-        XCTAssertEqual(cache.items.first?.id, item.id)
+        XCTAssertEqual(cache.tasks.count, 1)
+        XCTAssertEqual(cache.tasks.first?.id, item.id)
     }
     
     func testRemoveItem() {
         let cache = FileCache()
         let item = ToDoItem(text: "Test")
         
-        cache.add(item: item)
+        cache.add(task: item)
         cache.remove(id: item.id)
         
-        XCTAssertTrue(cache.items.isEmpty)
+        XCTAssertTrue(cache.tasks.isEmpty)
     }
     
     func testSaveLoad() {
         let cache = FileCache()
         let item = ToDoItem(text: "Test")
-        cache.add(item: item)
+        cache.add(task: item)
         
         // Временный файл для тестирования
         let filename = FileManager.default.temporaryDirectory.appendingPathComponent("testfile.json").path
@@ -54,8 +54,8 @@ class FileCacheTests: XCTestCase {
         }
         
         
-        XCTAssertEqual(newCache.items.count, 1)
-        XCTAssertEqual(newCache.items.first?.id, item.id)
+        XCTAssertEqual(newCache.tasks.count, 1)
+        XCTAssertEqual(newCache.tasks.first?.id, item.id)
         
         // Удаление временного файла
         if FileManager.default.fileExists(atPath: filename) {

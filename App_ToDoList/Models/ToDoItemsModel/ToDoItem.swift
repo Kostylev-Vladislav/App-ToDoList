@@ -8,8 +8,6 @@
 import Foundation
 
 struct ToDoItem {
-
-    
     let id: String
     var text: String
     var importance: Importance

@@ -9,8 +9,10 @@ import SwiftUI
 import UIKit
 
 struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
+    @EnvironmentObject var taskStorage: TaskStorage
     func makeUIViewController(context: Context) -> CalendarViewController {
-        return CalendarViewController()
+        let vc = CalendarViewController(taskStorage: taskStorage)
+        return vc
     }
     
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {

@@ -9,19 +9,38 @@
 import SwiftUI
 
 struct MainScreen: View {
-    @StateObject var taskStorage = TaskStorage.shared
+    @StateObject var taskStorage = TaskStorage()
     @State var showingAddTaskView = false
-    @State private var showCompleted = false
-    @State private var sortByImportance = false
-    @State private var showMenu = false
     @State private var isPresentingCalendar = false
     
-    
-    var filtredTasks: [ToDoItem] {
-        if !showCompleted {
-            taskStorage.tasks.sorted { sortByImportance ? $0.importance.rawValue > $1.importance.rawValue : true }
-        } else {
-            taskStorage.tasks.sorted { sortByImportance ? $0.createdDate > $1.createdDate : true }
+    var menu: some View {
+        Menu {
+            Button(
+                action: {
+                    taskStorage.changeShowButtonValue()
+                    taskStorage.updateSortedItems()
+                },
+                label: {
+                    Text(taskStorage.showButtonText)
+                }
+            )
+            Button(
+                action: {
+                    taskStorage.changeSortButtonValue()
+                    taskStorage.updateSortedItems()
+                },
+                label: {
+                    Text(taskStorage.sortButtonText)
+                }
+            )
+        } label: {
+            Label {
+                Image(systemName: "slider.horizontal.3")
+                    .resizable()
+                    .frame(width: 18, height: 18)
+            } icon: {
+                Text("")
+            }
         }
     }
     
@@ -46,30 +65,9 @@ struct MainScreen: View {
                 .padding([.trailing, .top])
                 .sheet(isPresented: $isPresentingCalendar) {
                     CalendarViewControllerRepresentable()
+                        .environmentObject(taskStorage)
                 }
-//                Button(action: {
-//                    withAnimation {
-//                        showMenu.toggle()
-//                    }
-//                }) {
-//                    Image("Filter")
-//                        .frame(maxWidth: 100)
-//                        .padding(.top, 16)
-//                    
-//                }
         }
-
-//            if showMenu {
-//                VStack {
-//                    Toggle("Скрыть/Показать выполненное", isOn: $showCompleted)
-//                        .padding()
-//                    Toggle("Сортировка по добавлению/важности", isOn: $sortByImportance)
-//                        .padding()
-//                }
-//                .background(Color("BackSecondary"))
-//                .cornerRadius(8)
-//                .padding()
-//            }
         }
         .padding([.leading, .trailing, .top])
     }
@@ -78,28 +76,17 @@ struct MainScreen: View {
         List {
             Section(header:
                         HStack {
-                Text("Выполнено — \(taskStorage.tasks.filter { $0.isDone }.count)")
+                Text("Выполнено — \(taskStorage.count)")
                 
                 Spacer()
-                Button(showCompleted ? "Скрыть" : "Показать") {
-                    showCompleted.toggle()
-                }
-                .font(.custom("SFPro_Font", size: 15))
+                menu
+
             }
             ) {
-                ForEach($taskStorage.tasks, id: \.id) { $task in
-                    if showCompleted {
-                        TaskRow(task: $task)
-                            .environmentObject(taskStorage)
-                            .listRowBackground(Color("BackSecondary"))
-            
-                    } else {
-                        if !task.isDone {
-                            TaskRow(task: $task)
-                                .environmentObject(taskStorage)
-                                .listRowBackground(Color("BackSecondary")) 
-                        }
-                    }
+                ForEach($taskStorage.sortedItems) { task in
+                    TaskRow(task: task)
+                        .environmentObject(taskStorage)
+                        .listRowBackground(Color("BackSecondary"))
                 }
             }
         }
@@ -125,6 +112,7 @@ struct MainScreen: View {
                 
                 .sheet(isPresented: $showingAddTaskView) {
                     CreateEditScreen()
+                        .environmentObject(taskStorage)
                 }
             }
         }
@@ -136,6 +124,9 @@ struct MainScreen: View {
             VStack(alignment: .leading) {
                 title
                 list
+            }
+            .onAppear {
+                taskStorage.prepare()
             }
             .scrollContentBackground(.hidden)
             .background(Color("BackPrimary"))

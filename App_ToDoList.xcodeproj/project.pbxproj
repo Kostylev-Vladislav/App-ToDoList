@@ -16,6 +16,8 @@
 		4D500EB42C3D7704005797A4 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB32C3D7704005797A4 /* CocoaLumberjack */; };
 		4D500EB62C3D7704005797A4 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB52C3D7704005797A4 /* CocoaLumberjackSwift */; };
 		4D500EB82C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB72C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend */; };
+		4D500EBC2C3D7C21005797A4 /* FileCache in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EBB2C3D7C21005797A4 /* FileCache */; };
+		4D500EBE2C3FDC1F005797A4 /* URLSessionExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */; };
 		4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */; };
 		4DE4E2FF2C29E45C00624946 /* ParcingCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */; };
 		4DE4E3012C29E4AA00624946 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E3002C29E4AA00624946 /* ToDoItem.swift */; };
@@ -76,6 +78,7 @@
 		4D0537552C2574A5004999EF /* App_ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = App_ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D0537592C2574A5004999EF /* App_ToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_ToDoListUITests.swift; sourceTree = "<group>"; };
 		4D05375B2C2574A5004999EF /* App_ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtention.swift; sourceTree = "<group>"; };
 		4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingJson.swift; sourceTree = "<group>"; };
 		4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingCSV.swift; sourceTree = "<group>"; };
 		4DE4E3002C29E4AA00624946 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D500EBC2C3D7C21005797A4 /* FileCache in Frameworks */,
 				4D500EB62C3D7704005797A4 /* CocoaLumberjackSwift in Frameworks */,
 				4D500EB82C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				4D500EB42C3D7704005797A4 /* CocoaLumberjack in Frameworks */,
@@ -146,7 +150,6 @@
 				3D7221B55149ACE2382ACF64 /* Pods-App_ToDoListTests.debug.xcconfig */,
 				807C216F57319C7E81B69FD8 /* Pods-App_ToDoListTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -251,6 +254,7 @@
 				4DE4E3332C33CCEB00624946 /* CheckDeadline.swift */,
 				4DE4E3062C29E92A00624946 /* FileCache.swift */,
 				4DE4E3212C318C5C00624946 /* TextFieldFrameModifier.swift */,
+				4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -315,6 +319,7 @@
 				4D0537372C2574A3004999EF /* Sources */,
 				4D0537382C2574A3004999EF /* Frameworks */,
 				4D0537392C2574A3004999EF /* Resources */,
+				4D500EB92C3D7893005797A4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -325,6 +330,7 @@
 				4D500EB32C3D7704005797A4 /* CocoaLumberjack */,
 				4D500EB52C3D7704005797A4 /* CocoaLumberjackSwift */,
 				4D500EB72C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend */,
+				4D500EBB2C3D7C21005797A4 /* FileCache */,
 			);
 			productName = App_ToDoList;
 			productReference = 4D05373B2C2574A3004999EF /* App_ToDoList.app */;
@@ -402,6 +408,7 @@
 			mainGroup = 4D0537322C2574A3004999EF;
 			packageReferences = (
 				4D500EB22C3D7704005797A4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */,
 			);
 			productRefGroup = 4D05373C2C2574A3004999EF /* Products */;
 			projectDirPath = "";
@@ -441,6 +448,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4D500EB92C3D7893005797A4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint не установлен. Установите его с помощью 'brew install swiftlint'\"\nfi\n";
+		};
 		72D6B52C394D52E3412A391C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,6 +556,7 @@
 				4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */,
 				4DE4E3262C32999600624946 /* CalendarViewController.swift in Sources */,
 				4DE4E3152C2A8F7500624946 /* TaskStorage.swift in Sources */,
+				4D500EBE2C3FDC1F005797A4 /* URLSessionExtention.swift in Sources */,
 				4DE4E3072C29E92A00624946 /* FileCache.swift in Sources */,
 				4DE4E33E2C38009400624946 /* CategoryPicker.swift in Sources */,
 				4D05373F2C2574A3004999EF /* App_ToDoListApp.swift in Sources */,
@@ -717,6 +742,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vladislavK.App-ToDoList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -746,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vladislavK.App-ToDoList";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -877,6 +904,14 @@
 				minimumVersion = 3.8.5;
 			};
 		};
+		4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kostylev-Vladislav/FileCache.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -894,6 +929,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4D500EB22C3D7704005797A4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwiftLogBackend;
+		};
+		4D500EBB2C3D7C21005797A4 /* FileCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */;
+			productName = FileCache;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

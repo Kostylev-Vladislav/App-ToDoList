@@ -93,7 +93,7 @@ extension CalendarViewController {
                 if !task.isDone {
                     self.tasks[index].isDone = true
                     task.isDone = true
-                    TaskStorage.shared.updateTask(task)
+                    self.taskStorage.updateTask(task)
                     tableView.performBatchUpdates({
                         tableView.reloadRows(at: [indexPath], with: .automatic)
                     }, completion: { _ in
@@ -116,7 +116,7 @@ extension CalendarViewController {
                 if task.isDone {
                     self.tasks[index].isDone = false
                     task.isDone = false
-                    TaskStorage.shared.updateTask(task)
+                    self.taskStorage.updateTask(task)
                     tableView.performBatchUpdates({
                         tableView.reloadRows(at: [indexPath], with: .automatic)
                     }, completion: { _ in

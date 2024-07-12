@@ -14,20 +14,21 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     
     var collectionView: UICollectionView!
     var tableView: UITableView!
-    var separator: UIView!
-    
+    var separator: UIView!//  
     var tasks: [ToDoItem]
     var dates: [Date]
-    
+    var taskStorage: TaskStorage
     var selectedDate: Date?
     
     
     
-    init() {
-        self.tasks = TaskStorage.shared.tasks
+    init(taskStorage: TaskStorage) {
+        self.taskStorage = taskStorage
+        self.tasks = taskStorage.fileCache.tasks
         self.dates = getUniqueDays(from: tasks)
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,7 +74,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             collectionView.scrollToItem(at: IndexPath(item: collectionView.numberOfItems(inSection: 0) - 1, section: 0), at: .centeredHorizontally, animated: true)
         }
-        collectionView.reloadData()
         
     }
     
@@ -93,8 +93,8 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         loadDates()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.tasks = TaskStorage.shared.tasks
+    override func viewDidLayoutSubviews() {
+        self.tasks = taskStorage.fileCache.tasks
         collectionView.reloadData()
         tableView.reloadData()
     }
@@ -169,12 +169,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc func addTask() {
-        let createEditScreen = UIHostingController(rootView: CreateEditScreen())
+        let createEditScreen = UIHostingController(rootView: CreateEditScreen().environmentObject(taskStorage))
         createEditScreen.modalPresentationStyle = .automatic
         present(createEditScreen, animated: true, completion: nil)
-//        self.tasks = TaskStorage.shared.getTasks()
-//        loadDates()
-//        print(tasks.count)
+        loadDates()
 
     }
 }

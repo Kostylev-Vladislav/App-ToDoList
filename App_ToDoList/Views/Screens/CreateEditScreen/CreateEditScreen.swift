@@ -3,6 +3,8 @@ import SwiftUI
 struct CreateEditScreen: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var taskStorage: TaskStorage
+    
     @State private var taskText = ""
     @State private var importance: Importance = .normal
     @State private var hasDeadlineDate = false
@@ -154,10 +156,10 @@ struct CreateEditScreen: View {
         Button("Сохранить") {
             if let task = task {
                 let newVersionTask = ToDoItem(id: task.id, text: taskText, importance: importance, isDone: task.isDone, createdDate: task.createdDate, deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: Date(), colorHex: selectedColor.hexString, category: selectedCategory)
-                TaskStorage.shared.updateTask(newVersionTask)
+                taskStorage.updateTask(newVersionTask)
             } else {
                 let newTask = ToDoItem(text: taskText, importance: importance, isDone: false, createdDate: Date(), deadline: hasDeadlineDate ? deadlineDate : nil, changedDate: nil, colorHex: selectedColor.hexString, category: selectedCategory)
-                TaskStorage.shared.addTask(newTask)
+                taskStorage.addTask(newTask)
             }
             presentationMode.wrappedValue.dismiss()
         }
@@ -173,7 +175,7 @@ struct CreateEditScreen: View {
     private var deleteButton: some View {
         Button(action: {
             if let task = task {
-                TaskStorage.shared.deleteTask(task)
+                taskStorage.deleteTask(task)
                 presentationMode.wrappedValue.dismiss()
             }
         }) {
