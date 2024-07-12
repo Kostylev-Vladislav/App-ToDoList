@@ -124,8 +124,12 @@ struct CreateEditScreen: View {
                         .foregroundColor(.primary)
                     Spacer()
                     ColorView(color: $selectedColor)
-                        .frame(width: 30, height: 30)
+                        .frame(width: 25, height: 25)
                         .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.black, lineWidth: 1)
+                        )
                 }
             }
             if showColorPicker {

@@ -4,9 +4,9 @@
 //
 //  Created by Владислав on 25.06.2024.
 //
-import FileCache
 import Foundation
 import CocoaLumberjackSwift
+import FileCacheLibrary
 
 class TaskStorage: ObservableObject {
     let fileCache = FileCache()
