@@ -1,5 +1,5 @@
 {
-  "originHash" : "96234ab61024a91c6d3e0ed82f492e423a982c2a71ab6c8476347ae3fefd540a",
+  "originHash" : "d6eb05a4fc4ee3afe0b37422b3bfb3cf61a71d5750cf38d080e73c3be2a2d6f4",
   "pins" : [
     {
       "identity" : "cocoalumberjack",
@@ -11,12 +11,12 @@
       }
     },
     {
-      "identity" : "filecache",
+      "identity" : "filecachelibrary",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Kostylev-Vladislav/FileCache.git",
+      "location" : "https://github.com/Kostylev-Vladislav/FileCacheLibrary.git",
       "state" : {
         "branch" : "main",
-        "revision" : "3f798e64fda913309b5b0fa6af57bf987cb19363"
+        "revision" : "b65d864da43bebaebd134094c222dcfdaba14be0"
       }
     },
     {

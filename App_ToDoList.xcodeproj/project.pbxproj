@@ -16,9 +16,9 @@
 		4D500EB42C3D7704005797A4 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB32C3D7704005797A4 /* CocoaLumberjack */; };
 		4D500EB62C3D7704005797A4 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB52C3D7704005797A4 /* CocoaLumberjackSwift */; };
 		4D500EB82C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB72C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend */; };
-		4D500EBC2C3D7C21005797A4 /* FileCache in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EBB2C3D7C21005797A4 /* FileCache */; };
 		4D500EBE2C3FDC1F005797A4 /* URLSessionExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */; };
 		4D500EC02C414B77005797A4 /* URLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBF2C414B77005797A4 /* URLSessionTests.swift */; };
+		4D500EC62C4195A5005797A4 /* FileCacheLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EC52C4195A5005797A4 /* FileCacheLibrary */; };
 		4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */; };
 		4DE4E2FF2C29E45C00624946 /* ParcingCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */; };
 		4DE4E3012C29E4AA00624946 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E3002C29E4AA00624946 /* ToDoItem.swift */; };
@@ -115,7 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D500EBC2C3D7C21005797A4 /* FileCache in Frameworks */,
+				4D500EC62C4195A5005797A4 /* FileCacheLibrary in Frameworks */,
 				4D500EB62C3D7704005797A4 /* CocoaLumberjackSwift in Frameworks */,
 				4D500EB82C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				4D500EB42C3D7704005797A4 /* CocoaLumberjack in Frameworks */,
@@ -333,7 +333,7 @@
 				4D500EB32C3D7704005797A4 /* CocoaLumberjack */,
 				4D500EB52C3D7704005797A4 /* CocoaLumberjackSwift */,
 				4D500EB72C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend */,
-				4D500EBB2C3D7C21005797A4 /* FileCache */,
+				4D500EC52C4195A5005797A4 /* FileCacheLibrary */,
 			);
 			productName = App_ToDoList;
 			productReference = 4D05373B2C2574A3004999EF /* App_ToDoList.app */;
@@ -411,7 +411,7 @@
 			mainGroup = 4D0537322C2574A3004999EF;
 			packageReferences = (
 				4D500EB22C3D7704005797A4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
-				4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */,
+				4D500EC42C4195A5005797A4 /* XCRemoteSwiftPackageReference "FileCacheLibrary" */,
 			);
 			productRefGroup = 4D05373C2C2574A3004999EF /* Products */;
 			projectDirPath = "";
@@ -908,9 +908,9 @@
 				minimumVersion = 3.8.5;
 			};
 		};
-		4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */ = {
+		4D500EC42C4195A5005797A4 /* XCRemoteSwiftPackageReference "FileCacheLibrary" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kostylev-Vladislav/FileCache.git";
+			repositoryURL = "https://github.com/Kostylev-Vladislav/FileCacheLibrary.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -934,10 +934,10 @@
 			package = 4D500EB22C3D7704005797A4 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwiftLogBackend;
 		};
-		4D500EBB2C3D7C21005797A4 /* FileCache */ = {
+		4D500EC52C4195A5005797A4 /* FileCacheLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4D500EBA2C3D7C21005797A4 /* XCRemoteSwiftPackageReference "FileCache" */;
-			productName = FileCache;
+			package = 4D500EC42C4195A5005797A4 /* XCRemoteSwiftPackageReference "FileCacheLibrary" */;
+			productName = FileCacheLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
