@@ -18,6 +18,7 @@
 		4D500EB82C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EB72C3D7704005797A4 /* CocoaLumberjackSwiftLogBackend */; };
 		4D500EBC2C3D7C21005797A4 /* FileCache in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EBB2C3D7C21005797A4 /* FileCache */; };
 		4D500EBE2C3FDC1F005797A4 /* URLSessionExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */; };
+		4D500EC02C414B77005797A4 /* URLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBF2C414B77005797A4 /* URLSessionTests.swift */; };
 		4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */; };
 		4DE4E2FF2C29E45C00624946 /* ParcingCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */; };
 		4DE4E3012C29E4AA00624946 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E3002C29E4AA00624946 /* ToDoItem.swift */; };
@@ -79,6 +80,7 @@
 		4D0537592C2574A5004999EF /* App_ToDoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_ToDoListUITests.swift; sourceTree = "<group>"; };
 		4D05375B2C2574A5004999EF /* App_ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtention.swift; sourceTree = "<group>"; };
+		4D500EBF2C414B77005797A4 /* URLSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTests.swift; sourceTree = "<group>"; };
 		4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingJson.swift; sourceTree = "<group>"; };
 		4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingCSV.swift; sourceTree = "<group>"; };
 		4DE4E3002C29E4AA00624946 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				4D05374F2C2574A5004999EF /* App_ToDoListTests.swift */,
 				4DE4E3082C29E98A00624946 /* ToDoItemTests.swift */,
 				4DE4E30A2C29E9D200624946 /* FileCacheTests.swift */,
+				4D500EBF2C414B77005797A4 /* URLSessionTests.swift */,
 			);
 			path = App_ToDoListTests;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			files = (
 				4DE4E3092C29E98A00624946 /* ToDoItemTests.swift in Sources */,
 				4DE4E30B2C29E9D200624946 /* FileCacheTests.swift in Sources */,
+				4D500EC02C414B77005797A4 /* URLSessionTests.swift in Sources */,
 				4D0537502C2574A5004999EF /* App_ToDoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
