@@ -35,6 +35,7 @@ struct TaskRow: View {
                 Image(task.isDone ? "CheckmarkCircle" : "EmptyCircle")
                     .foregroundColor(task.isDone ? .green : .gray)
                     .onTapGesture {
+                        print(task)
                         task.isDone.toggle()
                         taskStorage.updateTask(task)
                     }
@@ -98,6 +99,7 @@ struct TaskRow: View {
         }
         .sheet(isPresented: $isPresentingModal) {
             CreateEditScreen(task: task)
+                .environmentObject(taskStorage)
         }
     }
 }
