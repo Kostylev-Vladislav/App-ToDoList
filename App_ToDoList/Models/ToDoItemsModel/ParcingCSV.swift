@@ -42,7 +42,7 @@ extension ToDoItem {
         
         let id = components[0]
         let text = components[1]
-        let importance = Importance(rawValue: components[2]) ?? .normal
+        let importance = Importance(rawValue: components[2]) ?? .basic
         let createdDate = Date(timeIntervalSince1970: createdTime)
         
         let deadline = TimeInterval(components[5]).map { Date(timeIntervalSince1970: $0) }

@@ -6,18 +6,22 @@
 //
 
 import Foundation
+import UIKit
+
+
 
 extension ToDoItem {
-    enum JSONKeys: String {
+    enum JSONKeys: String, CodingKey {
         case id
         case text
-        case isDone
-        case createdDate
         case importance
+        case isDone = "done"
+        case colorHex = "color"
+        case createdDate = "created_at"
+        case changedDate = "changed_at"
         case deadline
-        case changedDate
-        case colorHex
-        case category
+        case last_updated_by
+        case files
     }
 
     var json: Any {
@@ -25,21 +29,24 @@ extension ToDoItem {
             JSONKeys.id.rawValue: id,
             JSONKeys.text.rawValue: text,
             JSONKeys.isDone.rawValue: isDone,
-            JSONKeys.createdDate.rawValue: createdDate.timeIntervalSince1970,
-            JSONKeys.category.rawValue: category
+            JSONKeys.importance.rawValue: importance.rawValue,
+            JSONKeys.createdDate.rawValue: Int64(createdDate.timeIntervalSince1970),
+            JSONKeys.changedDate.rawValue: Int64(createdDate.timeIntervalSince1970),
+            JSONKeys.last_updated_by.rawValue: UIDevice.current.identifierForVendor?.uuidString ?? "unknow"
         ]
-        if importance != .normal {
-            dict[JSONKeys.importance.rawValue] = importance.rawValue
-        }
+
         if let deadline = deadline {
-            dict[JSONKeys.deadline.rawValue] = deadline.timeIntervalSince1970
+            dict[JSONKeys.deadline.rawValue] = Int64(deadline.timeIntervalSince1970)
         }
         if let changedDate = changedDate {
-            dict[JSONKeys.changedDate.rawValue] = changedDate.timeIntervalSince1970
+            dict[JSONKeys.changedDate.rawValue] = Int64(changedDate.timeIntervalSince1970)
+        } else {
+            dict[JSONKeys.changedDate.rawValue] = Int64(createdDate.timeIntervalSince1970)
         }
         if let colorHex = colorHex {
             dict[JSONKeys.colorHex.rawValue] = colorHex
         }
+        
         return dict
     }
     
@@ -51,11 +58,11 @@ extension ToDoItem {
               let isDone = dict[JSONKeys.isDone.rawValue] as? Bool,
               let createdTime = dict[JSONKeys.createdDate.rawValue] as? TimeInterval else { return nil }
         
-        let categoryRawValue = dict[JSONKeys.category.rawValue] as? String
-        let category = TaskCategory(rawValue: categoryRawValue ?? TaskCategory.other.rawValue) ?? .other
+//        let categoryRawValue = dict[JSONKeys.category.rawValue] as? String
+//        let category = TaskCategory(rawValue: categoryRawValue ?? TaskCategory.other.rawValue) ?? .other
         
         let importanceRawValue = dict[JSONKeys.importance.rawValue] as? String
-        let importance = Importance(rawValue: importanceRawValue ?? Importance.normal.rawValue) ?? .normal
+        let importance = Importance(rawValue: importanceRawValue ?? Importance.basic.rawValue) ?? .basic
         
         let createdDate = Date(timeIntervalSince1970: createdTime)
         
@@ -67,6 +74,24 @@ extension ToDoItem {
         
         let colorHex = dict[JSONKeys.colorHex.rawValue] as? String
         
-        return ToDoItem(id: id, text: text, importance: importance, isDone: isDone, createdDate: createdDate, deadline: deadline, changedDate: changedDate, colorHex: colorHex, category: category)
+        return ToDoItem(id: id, text: text, importance: importance, isDone: isDone, createdDate: createdDate, deadline: deadline, changedDate: changedDate, colorHex: colorHex, category: .other)
+    }
+    
+    enum ParsingError: Error {
+        case invalidFormat
+        case missingField(String)
+    }
+    
+    static func parseTodoList(from jsonData: Data) throws -> [ToDoItem] {
+        do {
+            let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            guard let dict = jsonObject as? [String: Any],
+                  let list = dict["list"] as? [[String: Any]] else {
+                throw ParsingError.invalidFormat
+            }
+            return list.compactMap {ToDoItem.parse(json: $0)}
+        } catch {
+            throw error
+        }
     }
 }

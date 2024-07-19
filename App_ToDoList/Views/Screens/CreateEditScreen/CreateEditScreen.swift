@@ -6,7 +6,7 @@ struct CreateEditScreen: View {
     @EnvironmentObject var taskStorage: TaskStorage
     
     @State private var taskText = ""
-    @State private var importance: Importance = .normal
+    @State private var importance: Importance = .basic
     @State private var hasDeadlineDate = false
     @State private var deadlineDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     @State private var selectedColor: Color = .clear
@@ -63,9 +63,9 @@ struct CreateEditScreen: View {
             Spacer()
             Picker("", selection: $importance) {
                 Image("DownArrow")
-                    .tag(Importance.unimportant)
+                    .tag(Importance.low)
                 Text("нет")
-                    .tag(Importance.normal)
+                    .tag(Importance.basic)
                 Image("RedExclamationMarks")
                     .tag(Importance.important)
             }

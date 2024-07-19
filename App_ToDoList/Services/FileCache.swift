@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum FileCacheError: Error {
     case fileNotFound
@@ -15,7 +16,7 @@ enum FileCacheError: Error {
 }
 
 class FileCache {
-    private(set) var tasks: [ToDoItem] = [ToDoItem(text: "Пример задачи 1", importance: .important, isDone: false, createdDate: Date(), deadline: nil, changedDate: nil, colorHex: "F12B30", category: .hobby), ToDoItem(text: "Пример задачи 2", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 1000000), changedDate: nil, colorHex: "5FFF30", category: .work), ToDoItem(text: "Пример задачи 3", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B50"), ToDoItem(text: "Пример задачи 4", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 3000000), changedDate: nil, colorHex: "953B30"), ToDoItem(text: "Пример задачи 5", importance: .important, isDone: false, createdDate: Date(), deadline: nil, changedDate: nil, colorHex: "FF3B30", category: .study), ToDoItem(text: "Пример задачи 6", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "F03B00"), ToDoItem(text: "Пример задачи 7", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B30", category: .study), ToDoItem(text: "Пример задачи 8", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 2000000), changedDate: nil, colorHex: "0F3B30"), ToDoItem(text: "Пример задачи", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 2000000), changedDate: nil, colorHex: "FF9B30"), ToDoItem(text: "Пример задачи 9", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 10", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 2000000), changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 11", importance: .important, isDone: false, createdDate: Date(), deadline: nil, changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 12", importance: .important, isDone: false, createdDate: Date(), deadline: nil, changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 13", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 2000000), changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 14", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "BF3B30"), ToDoItem(text: "Пример задачи 15", importance: .important, isDone: false, createdDate: Date(), deadline: nil, changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 16", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 17", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B00"), ToDoItem(text: "Пример задачи", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 3000000), changedDate: nil, colorHex: "FF3B30", category: .study), ToDoItem(text: "Пример задачи 18", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B30"), ToDoItem(text: "Пример задачи 19", importance: .important, isDone: false, createdDate: Date(), deadline: Date(), changedDate: nil, colorHex: "FF3B30", category: .work), ToDoItem(text: "Пример задачи 20", importance: .important, isDone: false, createdDate: Date(), deadline: Date(timeIntervalSinceNow: 3000000), changedDate: nil, colorHex: "FF3030")]
+    private(set) var tasks: [ToDoItem] = []
     
     func add(task: ToDoItem) {
         let itemDuplicated = tasks.contains { $0.id == task.id }
@@ -33,6 +34,28 @@ class FileCache {
     func remove(id: String) {
         tasks.removeAll {$0.id == id}
     }
+    
+//    private let userDefaults = UserDefaults.standard
+//    private let todosKey = "todos"
+    
+    func updateAll(_ newTasks: [ToDoItem]) {
+        tasks = newTasks
+    }
+    
+//    func saveTodos(_ todos: [ToDoItem]) {
+//        if let data = try? JSONEncoder().encode(todos) {
+//            userDefaults.set(data, forKey: todosKey)
+//            tasks = data
+//        }
+//    }
+//    
+//    func loadTodos() -> [ToDoItem] {
+//        if let data = userDefaults.data(forKey: todosKey),
+//           let todos = try? JSONDecoder().decode([ToDoItem].self, from: data) {
+//            return todos
+//        }
+//        return []
+//    }
     
     func save(filename: String) throws {
         let jsonArray = tasks.map { $0.json }
