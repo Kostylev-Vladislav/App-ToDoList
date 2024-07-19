@@ -19,6 +19,14 @@
 		4D500EBE2C3FDC1F005797A4 /* URLSessionExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */; };
 		4D500EC02C414B77005797A4 /* URLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EBF2C414B77005797A4 /* URLSessionTests.swift */; };
 		4D500EC62C4195A5005797A4 /* FileCacheLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 4D500EC52C4195A5005797A4 /* FileCacheLibrary */; };
+		4D500EC92C42AD01005797A4 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500EC82C42AD01005797A4 /* NetworkingServiceProtocol.swift */; };
+		4D500ECB2C42AD57005797A4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ECA2C42AD57005797A4 /* NetworkingService.swift */; };
+		4D500ECD2C42B0F1005797A4 /* ToDoListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ECC2C42B0F1005797A4 /* ToDoListResponse.swift */; };
+		4D500ECF2C442BF1005797A4 /* ToDoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ECE2C442BF1005797A4 /* ToDoResponse.swift */; };
+		4D500ED42C481097005797A4 /* ConvertResponseInToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ED32C481097005797A4 /* ConvertResponseInToDoItem.swift */; };
+		4D500ED62C48EAD2005797A4 /* ConvertToDoItemInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ED52C48EAD2005797A4 /* ConvertToDoItemInResponse.swift */; };
+		4D500ED82C48EF7B005797A4 /* ConvertResponseListInToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ED72C48EF7B005797A4 /* ConvertResponseListInToDoList.swift */; };
+		4D500EDA2C48FDF6005797A4 /* ConvertToDoListInResponseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D500ED92C48FDF6005797A4 /* ConvertToDoListInResponseList.swift */; };
 		4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */; };
 		4DE4E2FF2C29E45C00624946 /* ParcingCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */; };
 		4DE4E3012C29E4AA00624946 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE4E3002C29E4AA00624946 /* ToDoItem.swift */; };
@@ -81,6 +89,14 @@
 		4D05375B2C2574A5004999EF /* App_ToDoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_ToDoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtention.swift; sourceTree = "<group>"; };
 		4D500EBF2C414B77005797A4 /* URLSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTests.swift; sourceTree = "<group>"; };
+		4D500EC82C42AD01005797A4 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
+		4D500ECA2C42AD57005797A4 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		4D500ECC2C42B0F1005797A4 /* ToDoListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListResponse.swift; sourceTree = "<group>"; };
+		4D500ECE2C442BF1005797A4 /* ToDoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoResponse.swift; sourceTree = "<group>"; };
+		4D500ED32C481097005797A4 /* ConvertResponseInToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponseInToDoItem.swift; sourceTree = "<group>"; };
+		4D500ED52C48EAD2005797A4 /* ConvertToDoItemInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertToDoItemInResponse.swift; sourceTree = "<group>"; };
+		4D500ED72C48EF7B005797A4 /* ConvertResponseListInToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponseListInToDoList.swift; sourceTree = "<group>"; };
+		4D500ED92C48FDF6005797A4 /* ConvertToDoListInResponseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertToDoListInResponseList.swift; sourceTree = "<group>"; };
 		4DE4E2FC2C29E43D00624946 /* ParcingJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingJson.swift; sourceTree = "<group>"; };
 		4DE4E2FE2C29E45C00624946 /* ParcingCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcingCSV.swift; sourceTree = "<group>"; };
 		4DE4E3002C29E4AA00624946 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
@@ -180,6 +196,7 @@
 		4D05373D2C2574A3004999EF /* App_ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				4D500EC72C42ACCF005797A4 /* Networking */,
 				4DE4E3442C386DEB00624946 /* Views */,
 				4DE4E3052C29E8A400624946 /* Services */,
 				4DE4E3042C29E88700624946 /* Models */,
@@ -216,6 +233,22 @@
 				4D05375B2C2574A5004999EF /* App_ToDoListUITestsLaunchTests.swift */,
 			);
 			path = App_ToDoListUITests;
+			sourceTree = "<group>";
+		};
+		4D500EC72C42ACCF005797A4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */,
+				4D500EC82C42AD01005797A4 /* NetworkingServiceProtocol.swift */,
+				4D500ECA2C42AD57005797A4 /* NetworkingService.swift */,
+				4D500ECC2C42B0F1005797A4 /* ToDoListResponse.swift */,
+				4D500ECE2C442BF1005797A4 /* ToDoResponse.swift */,
+				4D500ED32C481097005797A4 /* ConvertResponseInToDoItem.swift */,
+				4D500ED52C48EAD2005797A4 /* ConvertToDoItemInResponse.swift */,
+				4D500ED72C48EF7B005797A4 /* ConvertResponseListInToDoList.swift */,
+				4D500ED92C48FDF6005797A4 /* ConvertToDoListInResponseList.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		4D78FA052C38738A002C43EC /* CreateEditScreen */ = {
@@ -255,9 +288,8 @@
 				4DE4E3272C32A1F100624946 /* CalendarViewControllerRepresentable.swift */,
 				4DE4E31F2C2F703100624946 /* KeyboardAdaptiveModifire.swift */,
 				4DE4E3332C33CCEB00624946 /* CheckDeadline.swift */,
-				4DE4E3062C29E92A00624946 /* FileCache.swift */,
 				4DE4E3212C318C5C00624946 /* TextFieldFrameModifier.swift */,
-				4D500EBD2C3FDC1F005797A4 /* URLSessionExtention.swift */,
+				4DE4E3062C29E92A00624946 /* FileCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -541,19 +573,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D500ECB2C42AD57005797A4 /* NetworkingService.swift in Sources */,
 				4DE4E2FF2C29E45C00624946 /* ParcingCSV.swift in Sources */,
+				4D500ECD2C42B0F1005797A4 /* ToDoListResponse.swift in Sources */,
 				4DE4E30D2C29FFDC00624946 /* MainScreen.swift in Sources */,
 				4DE4E3302C332C7300624946 /* DateCollectionView.swift in Sources */,
 				4DE4E3172C2AA16400624946 /* TaskRow.swift in Sources */,
+				4D500EDA2C48FDF6005797A4 /* ConvertToDoListInResponseList.swift in Sources */,
+				4D500ED62C48EAD2005797A4 /* ConvertToDoItemInResponse.swift in Sources */,
 				4DE4E3132C2A8D5D00624946 /* CreateEditScreen.swift in Sources */,
 				4DE4E3422C380D8700624946 /* TaskCategory.swift in Sources */,
 				4DE4E3342C33CCEB00624946 /* CheckDeadline.swift in Sources */,
 				4DE4E33C2C370F3700624946 /* TaskTableCell.swift in Sources */,
+				4D500ED82C48EF7B005797A4 /* ConvertResponseListInToDoList.swift in Sources */,
+				4D500ECF2C442BF1005797A4 /* ToDoResponse.swift in Sources */,
 				4DE4E3322C332DAC00624946 /* TasksTableView.swift in Sources */,
 				4DE4E32A2C32A80200624946 /* DateCollectionViewCell.swift in Sources */,
 				4DE4E3012C29E4AA00624946 /* ToDoItem.swift in Sources */,
 				4DE4E3402C380D2000624946 /* Importance.swift in Sources */,
 				4DE4E3282C32A1F100624946 /* CalendarViewControllerRepresentable.swift in Sources */,
+				4D500EC92C42AD01005797A4 /* NetworkingServiceProtocol.swift in Sources */,
 				4DE4E31C2C2F4F5300624946 /* ColorPicker.swift in Sources */,
 				4DE4E3222C318C5C00624946 /* TextFieldFrameModifier.swift in Sources */,
 				4DE4E2FD2C29E43D00624946 /* ParcingJson.swift in Sources */,
@@ -563,6 +602,7 @@
 				4DE4E3072C29E92A00624946 /* FileCache.swift in Sources */,
 				4DE4E33E2C38009400624946 /* CategoryPicker.swift in Sources */,
 				4D05373F2C2574A3004999EF /* App_ToDoListApp.swift in Sources */,
+				4D500ED42C481097005797A4 /* ConvertResponseInToDoItem.swift in Sources */,
 				4DE4E3202C2F703100624946 /* KeyboardAdaptiveModifire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

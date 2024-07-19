@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum TaskCategory: String, CaseIterable, Identifiable {
+enum TaskCategory: String, CaseIterable, Identifiable, Codable {
     case work = "Работа"
     case study = "Учеба"
     case hobby = "Хобби"

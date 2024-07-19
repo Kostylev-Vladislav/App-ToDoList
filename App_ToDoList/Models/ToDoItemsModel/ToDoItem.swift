@@ -18,7 +18,7 @@ struct ToDoItem {
     var colorHex: String?
     var category: TaskCategory
     
-    init(id: String = UUID().uuidString, text: String, importance: Importance = .normal,isDone: Bool = false, createdDate: Date = Date(), deadline: Date? = nil, changedDate: Date? = nil, colorHex: String? = nil, category: TaskCategory = .other) {
+    init(id: String = UUID().uuidString, text: String, importance: Importance = .basic, isDone: Bool = false, createdDate: Date = Date(), deadline: Date? = nil, changedDate: Date? = nil, colorHex: String? = nil, category: TaskCategory = .other) {
         self.id = id
         self.text = text
         self.importance = importance
@@ -29,4 +29,5 @@ struct ToDoItem {
         self.colorHex = colorHex
         self.category = category
     }
+    
 }

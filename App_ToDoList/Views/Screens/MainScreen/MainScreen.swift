@@ -127,6 +127,7 @@ struct MainScreen: View {
             }
             .onAppear {
                 taskStorage.prepare()
+                taskStorage.fetchTodos()
             }
             .scrollContentBackground(.hidden)
             .background(Color("BackPrimary"))
